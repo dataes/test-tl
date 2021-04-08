@@ -18,3 +18,5 @@ require __DIR__ . '/Dependencies.php';
 require __DIR__ . '/Services.php';
 require __DIR__ . '/Repositories.php';
 require __DIR__ . '/Routes.php';
+
+// todo create REST api for "category" like product and order

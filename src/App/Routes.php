@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use App\Controller\Note;
+use App\Controller\Product;
+use App\Controller\Order;
 use App\Controller\Task;
 use App\Controller\User;
 use App\Middleware\Auth;
@@ -36,5 +38,21 @@ $app->group('/api/v1', function () use ($app): void {
         $app->get('/{id}', Note\GetOne::class);
         $app->put('/{id}', Note\Update::class);
         $app->delete('/{id}', Note\Delete::class);
-    });
+    })->add(new Auth());
+
+    $app->group('/products', function () use ($app): void {
+        $app->get('', Product\GetAll::class);
+        $app->post('', Product\Create::class);
+        $app->get('/{id}', Product\GetOne::class);
+        $app->put('/{id}', Product\Update::class);
+        $app->delete('/{id}', Product\Delete::class);
+    })->add(new Auth());
+
+    $app->group('/orders', function () use ($app): void {
+        $app->get('', Order\GetAll::class);
+        $app->post('', Order\Create::class);
+        $app->get('/{id}', Order\GetOne::class);
+        $app->put('/{id}', Order\Update::class);
+        $app->delete('/{id}', Order\Delete::class);
+    })->add(new Auth());
 });

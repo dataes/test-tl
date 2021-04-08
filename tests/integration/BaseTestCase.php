@@ -12,6 +12,9 @@ use Psr\Http\Message\ResponseInterface;
 
 class BaseTestCase extends \PHPUnit\Framework\TestCase
 {
+    // todo run the tests in a DB tests + do fixtures and unitTest with mock for entities
+    // todo use faker in tests
+
     public static string $jwt = '';
 
     public function runApp(

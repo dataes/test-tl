@@ -50,7 +50,7 @@ class UserTest extends BaseTestCase
      */
     public function testGetUser(): void
     {
-        $response = $this->runApp('GET', '/api/v1/users/8');
+        $response = $this->runApp('GET', '/api/v1/users/1');
 
         $result = (string) $response->getBody();
 

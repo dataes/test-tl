@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use App\Service\Note;
 use App\Service\Task\TaskService;
+use App\Service\Product\ProductService;
+use App\Service\Order\OrderService;
 use App\Service\User;
 use Psr\Container\ContainerInterface;
 
@@ -34,6 +36,16 @@ $container['login_user_service'] = static fn (ContainerInterface $container): Us
 
 $container['task_service'] = static fn (ContainerInterface $container): TaskService => new TaskService(
     $container->get('task_repository'),
+    $container->get('redis_service')
+);
+
+$container['product_service'] = static fn (ContainerInterface $container): ProductService => new ProductService(
+    $container->get('product_repository'),
+    $container->get('redis_service')
+);
+
+$container['order_service'] = static fn (ContainerInterface $container): OrderService => new OrderService(
+    $container->get('order_repository'),
     $container->get('redis_service')
 );
 
