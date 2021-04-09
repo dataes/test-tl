@@ -1,10 +1,10 @@
 # REST API IN SLIM PHP
 
-Example of RESTful API with [Slim PHP micro framework](https://www.slimframework.com).
+Example of RESTful API microservices with [Slim PHP micro framework](https://www.slimframework.com).
 
 Main technologies used: `PHP 7, Slim 3, MySQL, Redis, dotenv, PHPUnit and JSON Web Tokens.`
 
-Also, I use other aditional tools like: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, PHP Insights, Heroku and CORS.`
+Also, There are additional tools like: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, PHP Insights, Heroku and CORS.`
 
 ## :gear: QUICK INSTALL:
 
@@ -67,6 +67,12 @@ $ make db
 # Checkout the API.
 $ curl http://localhost:8081
 
+# To go in the php container;
+$ make php
+
+# To run the tests.
+$ composer test
+
 # Stop and remove containers (it's like: docker-compose down).
 $ make down
 ```
@@ -100,11 +106,11 @@ $ composer test
 > phpunit
 PHPUnit 9.5.1 by Sebastian Bergmann and contributors.
 
-........................................................          56 / 56 (100%)
+........................................................          57 / 57 (100%)
 
-Time: 00:00.277, Memory: 16.00 MB
+Time: 00:01.378, Memory: 16.00 MB
 
-OK (56 tests, 343 assertions)
+OK (57 tests, 328 assertions)
 ```
 
 
@@ -130,30 +136,30 @@ OK (56 tests, 343 assertions)
 - Delete User: `DELETE /api/v1/users/{id}`
 
 
-#### TASKS:
+#### PRODUCTS:
 
-- Get All Tasks: `GET /api/v1/tasks`
+- Get All Products: `GET /api/v1/products`
 
-- Get One Task: `GET /api/v1/tasks/{id}`
+- Get One Product: `GET /api/v1/products/{id}`
 
-- Create Task: `POST /api/v1/tasks`
+- Create Product: `POST /api/v1/products`
 
-- Update Task: `PUT /api/v1/tasks/{id}`
+- Update Product: `PUT /api/v1/products/{id}`
 
-- Delete Task: `DELETE /api/v1/tasks/{id}`
+- Delete Product: `DELETE /api/v1/products/{id}`
 
 
-#### NOTES:
+#### ORDERS:
 
-- Get All Notes: `GET /api/v1/notes`
+- Get your Orders: `GET /api/v1/orders`
 
-- Get One Note: `GET /api/v1/notes/{id}`
+- Get One of your Order: `GET /api/v1/orders/{id}`
 
-- Create Note: `POST /api/v1/notes`
+- Create Order: `POST /api/v1/orders`
 
-- Update Note: `PUT /api/v1/notes/{id}`
+- (TODO) Update Note: `PUT /api/v1/orders/{id}`
 
-- Delete Note: `DELETE /api/v1/notes/{id}`
+- Delete Order: `DELETE /api/v1/orders/{id}`
 
 Also, you can see the API documentation with the [full list of endpoints](extras/docs/endpoints.md).
 

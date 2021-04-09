@@ -60,7 +60,7 @@ final class ProductService extends Base
             throw new \App\Exception\Product('The field "category" is required.', 400);
         }
         $myProduct = new Product();
-        $myProduct->setId(self::validateProductId($data->id));
+        $myProduct->setId($this->validateProductId($data->id));
         $myProduct->setDescription((string) $data->description);
         $myProduct->setCategory(self::validateProductCategory($data->category));
         $myProduct->setPrice(self::validateProductPrice($data->price));

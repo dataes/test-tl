@@ -28,13 +28,4 @@ abstract class Base extends BaseController
     {
         return $this->container->get('find_user_service');
     }
-
-    protected function getAndValidateUserId(array $input): int
-    {
-        if (isset($input['decoded']) && isset($input['decoded']->sub)) {
-            return (int) $input['decoded']->sub;
-        }
-
-        throw new \App\Exception\Order('Invalid user. Permission failed.', 400);
-    }
 }

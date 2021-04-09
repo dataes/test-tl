@@ -9,18 +9,15 @@ use App\Entity\Order;
 final class OrderRepository extends BaseRepository
 {
     public function getOrdersByPage(
-        int $userId,
         int $page,
         int $perPage,
         ?string $total
     ): array {
         $params = [
-            'user_id' => $userId,
             'total' => is_null($total) ? '' : $total
         ];
         $query = $this->getQueryOrdersByPage();
         $statement = $this->database->prepare($query);
-        $statement->bindParam('user_id', $params['user_id']);
         $statement->bindParam('total', $params['total']);
         $statement->execute();
         $totalResult = $statement->rowCount();
@@ -39,8 +36,7 @@ final class OrderRepository extends BaseRepository
         return "
             SELECT *
             FROM `orders`
-            WHERE `user_id` = :user_id
-            AND `total` LIKE CONCAT('%', :total, '%')
+            WHERE `total` LIKE CONCAT('%', :total, '%')
             ORDER BY `id`
         ";
     }
@@ -94,17 +90,16 @@ final class OrderRepository extends BaseRepository
             $statement->execute();
         }
 
-        return $this->checkAndGetOrder((int)$id, (int) $userId);
+        return $this->checkAndGetOrder((int)$id);
     }
 
-    public function checkAndGetOrder(int $id, int $userId): Order
+    public function checkAndGetOrder(int $id): Order
     {
         $query = '
-            SELECT * FROM `orders` WHERE `id` = :id AND `user_id` = :userId
+            SELECT * FROM `orders` WHERE `id` = :id
         ';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $id);
-        $statement->bindParam('userId', $userId);
         $statement->execute();
         $order = $statement->fetchObject(Order::class);
         if (!$order) {
@@ -131,34 +126,33 @@ final class OrderRepository extends BaseRepository
 
     public function update(Order $order): Order
     {
-        $query = '
-            UPDATE `orders`
-            SET `total` = :total
-            WHERE `id` = :id AND `user_id` = :userId
-        ';
-        $statement = $this->getDb()->prepare($query);
-        $id = $order->getId();
-        $total = $order->getTotal();
-        $userId = $order->getUserId();
-        $statement->bindParam('id', $id);
-        $statement->bindParam('total', $total);
-        $statement->bindParam('userId', $userId);
-        $statement->execute();
-
-        return $this->checkAndGetOrder((int)$id, (int) $userId);
+//        $query = '
+//            UPDATE `orders`
+//            SET `total` = :total
+//            WHERE `id` = :id AND `user_id` = :userId
+//        ';
+//        $statement = $this->getDb()->prepare($query);
+//        $id = $order->getId();
+//        $total = $order->getTotal();
+//        $userId = $order->getUserId();
+//        $statement->bindParam('id', $id);
+//        $statement->bindParam('total', $total);
+//        $statement->bindParam('userId', $userId);
+//        $statement->execute();
+//
+//        return $this->checkAndGetOrder((int)$id);
     }
 
-    public function delete(int $orderId,  int $userId): void
+    public function delete(int $orderId): void
     {
         $query = 'DELETE FROM `product_has_order` WHERE `order_id` = :orderId';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('orderId', $orderId);
         $statement->execute();
 
-        $query = 'DELETE FROM `orders` WHERE `id` = :id AND `user_id` = :userId';
+        $query = 'DELETE FROM `orders` WHERE `id` = :id';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $orderId);
-        $statement->bindParam('userId', $userId);
         $statement->execute();
     }
 }

@@ -67,23 +67,23 @@ abstract class Base extends BaseService
         return (array)$items;
     }
 
-    protected function getOrderFromCache(int $orderId, int $userId): object
+    protected function getOrderFromCache(int $orderId): object
     {
-        $redisKey = sprintf(self::REDIS_KEY, $orderId, $userId);
+        $redisKey = sprintf(self::REDIS_KEY, $orderId);
         $key = $this->redisService->generateKey($redisKey);
         if ($this->redisService->exists($key)) {
             $order = $this->redisService->get($key);
         } else {
-            $order = $this->getOrderFromDb($orderId, $userId)->toJson();
+            $order = $this->getOrderFromDb($orderId)->toJson();
             $this->redisService->setex($key, $order);
         }
 
         return $order;
     }
 
-    protected function getOrderFromDb(int $orderId, int $userId): Order
+    protected function getOrderFromDb(int $orderId): Order
     {
-        return $this->getOrderRepository()->checkAndGetOrder($orderId, $userId);
+        return $this->getOrderRepository()->checkAndGetOrder($orderId);
     }
 
     protected function isOrderExist(string $orderId): bool
@@ -103,9 +103,9 @@ abstract class Base extends BaseService
         $this->redisService->setex($key, $order);
     }
 
-    protected function deleteFromCache(int $orderId, int $userId): void
+    protected function deleteFromCache(int $orderId): void
     {
-        $redisKey = sprintf(self::REDIS_KEY, $orderId, $userId);
+        $redisKey = sprintf(self::REDIS_KEY, $orderId);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->del([$key]);
     }

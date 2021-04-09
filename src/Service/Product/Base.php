@@ -27,10 +27,14 @@ abstract class Base extends BaseService
         $this->redisService = $redisService;
     }
 
-    protected static function validateProductId($id): string
+    protected function validateProductId($id): string
     {
         if (!v::notEmpty()->validate($id) || !v::stringType()->validate($id)) {
             throw new \App\Exception\Product('Invalid id, must be string type not empty.', 400);
+        }
+
+        if ($this->isProductExist($id)) {
+            throw new \App\Exception\Product('Id already used', 400);
         }
 
         return $id;
@@ -56,6 +60,7 @@ abstract class Base extends BaseService
 
     protected static function validateProductCategory($category): int
     {
+        // todo isCategoryExist()
         if (!v::notEmpty()->validate($category) || !v::stringType()->validate($category)) {
             throw new \App\Exception\Product('Invalid category, must be string type not empty.', 400);
         }
@@ -108,5 +113,10 @@ abstract class Base extends BaseService
         }
 
         throw new \App\Exception\Product('Invalid user. Permission failed.', 400);
+    }
+
+    protected function isProductExist(string $productId): bool
+    {
+        return $this->getProductRepository()->isProductExist($productId);
     }
 }

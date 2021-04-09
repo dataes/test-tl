@@ -33,9 +33,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}",
+							"raw": "{{app}}",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							]
 						},
 						"description": "Get help about this api."
@@ -47,9 +47,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{domain-api-rest-slimphp}}",
+									"raw": "{{app}}",
 									"host": [
-										"{{domain-api-rest-slimphp}}"
+										"{{app}}"
 									]
 								}
 							},
@@ -115,9 +115,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/status",
+							"raw": "{{app}}/status",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"status"
@@ -132,9 +132,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{domain-api-rest-slimphp}}/status",
+									"raw": "{{app}}/status",
 									"host": [
-										"{{domain-api-rest-slimphp}}"
+										"{{app}}"
 									],
 									"path": [
 										"status"
@@ -221,9 +221,9 @@
 							"raw": "{\n    \"email\": \"super.email@host.com\",\n    \"password\": \"OnePass1\"\n}"
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/login",
+							"raw": "{{app}}/login",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"login"
@@ -249,9 +249,9 @@
 									"raw": "{\n    \"email\": \"myuser@mail.com\",\n    \"password\": \"IDontKnow\"\n}"
 								},
 								"url": {
-									"raw": "{{domain-api-rest-slimphp}}/login",
+									"raw": "{{app}}/login",
 									"host": [
-										"{{domain-api-rest-slimphp}}"
+										"{{app}}"
 									],
 									"path": [
 										"login"
@@ -307,9 +307,9 @@
 									"raw": "{\n    \"email\": \"m@b.com.ar\",\n    \"password\": \"123\"\n}"
 								},
 								"url": {
-									"raw": "{{domain-api-rest-slimphp}}/login",
+									"raw": "{{app}}/login",
 									"host": [
-										"{{domain-api-rest-slimphp}}"
+										"{{app}}"
 									],
 									"path": [
 										"login"
@@ -391,9 +391,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/users?page=1&name=&email=&perPage=10",
+							"raw": "{{app}}/api/v1/users?page=1&name=&email=&perPage=10",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -453,9 +453,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/8",
+							"raw": "{{app}}/api/v1/users/8",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -501,9 +501,9 @@
 							"raw": "{\n  \"name\": \"John User\",\n  \"email\": \"super.email@host.com\",\n  \"password\": \"OnePass1\"\n}"
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/users",
+							"raw": "{{app}}/api/v1/users",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -554,9 +554,9 @@
 							"raw": "{\n  \"name\": \"John The User 22\",\n  \"email\": \"super.email@host.com\",\n  \"password\": \"OnePass1\"\n}"
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/9",
+							"raw": "{{app}}/api/v1/users/9",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -599,9 +599,9 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/112",
+							"raw": "{{app}}/api/v1/users/112",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -652,9 +652,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks?page=1&perPage=5&name=&description=&status=",
+							"raw": "{{app}}/api/v1/tasks?page=1&perPage=5&name=&description=&status=",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -719,9 +719,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/13",
+							"raw": "{{app}}/api/v1/tasks/13",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -773,9 +773,9 @@
 							"raw": "{\n  \"name\": \"Go To Sleep\",\n  \"description\": \"It's too late, go to sleep man ;-)\",\n  \"status\": 0\n}\n"
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks",
+							"raw": "{{app}}/api/v1/tasks",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -828,9 +828,9 @@
 							"raw": "{\n  \"name\": \"Go To Sleep NOW!!\",\n  \"description\": \"It's too late, go to sleep man haha...\",\n  \"status\": 1\n}\n"
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/29",
+							"raw": "{{app}}/api/v1/tasks/29",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -873,9 +873,9 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/29",
+							"raw": "{{app}}/api/v1/tasks/29",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -920,9 +920,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes?page=1&name=&description=&perPage=10",
+							"raw": "{{app}}/api/v1/notes?page=1&name=&description=&perPage=10",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -976,9 +976,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/3",
+							"raw": "{{app}}/api/v1/notes/3",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -1024,9 +1024,9 @@
 							"raw": "{\n  \"name\": \"New Soccer Note\",\n  \"description\": \"Magic Goal...\"\n}"
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes",
+							"raw": "{{app}}/api/v1/notes",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -1071,9 +1071,9 @@
 							"raw": "{\n  \"name\": \"My Note Number 433333\",\n  \"description\": \"Free Note?!?!?!\"\n}"
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/4",
+							"raw": "{{app}}/api/v1/notes/4",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",
@@ -1109,9 +1109,9 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/22",
+							"raw": "{{app}}/api/v1/notes/22",
 							"host": [
-								"{{domain-api-rest-slimphp}}"
+								"{{app}}"
 							],
 							"path": [
 								"api",

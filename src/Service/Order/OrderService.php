@@ -9,7 +9,6 @@ use App\Entity\Order;
 final class OrderService extends Base
 {
     public function getOrdersByPage(
-        int $userId,
         int $page,
         int $perPage,
         ?float $total
@@ -22,7 +21,6 @@ final class OrderService extends Base
         }
 
         return $this->getOrderRepository()->getOrdersByPage(
-            $userId,
             $page,
             $perPage,
             $total
@@ -34,12 +32,12 @@ final class OrderService extends Base
         return $this->getOrderRepository()->getAllOrders();
     }
 
-    public function getOne(int $orderId, int $userId): object
+    public function getOne(int $orderId): object
     {
         if (self::isRedisEnabled() === true) {
-            $order = $this->getOrderFromCache($orderId, $userId);
+            $order = $this->getOrderFromCache($orderId);
         } else {
-            $order = $this->getOrderFromDb($orderId, $userId)->toJson();
+            $order = $this->getOrderFromDb($orderId)->toJson();
         }
 
         return $order;
@@ -97,12 +95,12 @@ final class OrderService extends Base
 //        return $order;
 //    }
 //
-    public function delete(int $orderId, int $userId): void
+    public function delete(int $orderId): void
     {
-        $this->getOrderFromDb($orderId, $userId);
-        $this->getOrderRepository()->delete($orderId, $userId);
+        $this->getOrderFromDb($orderId);
+        $this->getOrderRepository()->delete($orderId);
         if (self::isRedisEnabled() === true) {
-            $this->deleteFromCache($orderId, $userId);
+            $this->deleteFromCache($orderId);
         }
     }
 }

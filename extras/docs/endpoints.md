@@ -1,9 +1,6 @@
 
 # Rest Api Slim PHP
-
-[Example of REST API](https://github.com/maurobonfietti/rest-api-slim-php) with Slim PHP micro framework.
-
-This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
+This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Products and Orders :-)
 
 
 ## Indices
@@ -17,21 +14,21 @@ This simple RESTful API made in Slim version 3, allows CRUD operations to manage
 
   * [Login](#1-login)
 
-* [Notes](#notes)
+* [Orders](#orders)
 
-  * [Get All Notes](#1-get-all-notes)
-  * [Get One Note](#2-get-one-note)
-  * [Create Note](#3-create-note)
-  * [Update Note](#4-update-note)
-  * [Delete Note](#5-delete-note)
+  * [Get All Orders](#1-get-all-orders)
+  * [Get One Order](#2-get-one-order)
+  * [Create Order](#3-create-order)
+  * [Update Order](#4-update-order)
+  * [Delete Order](#5-delete-order)
 
-* [Tasks](#tasks)
+* [Products](#products)
 
-  * [Get All Tasks](#1-get-all-tasks)
-  * [Get One Task](#2-get-one-task)
-  * [Create Task](#3-create-task)
-  * [Update Task](#4-update-task)
-  * [Delete Task](#5-delete-task)
+  * [Get All Products](#1-get-all-products)
+  * [Get One Product](#2-get-one-product)
+  * [Create Product](#3-create-product)
+  * [Update Product](#4-update-product)
+  * [Delete Product](#5-delete-product)
 
 * [Users](#users)
 
@@ -61,7 +58,7 @@ Get help about this api.
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}
+URL: {{app}}
 ```
 
 
@@ -79,9 +76,9 @@ Status: Get Help | Code: 200
     "status": "success",
     "message": {
         "endpoints": {
-            "tasks": "http://localhost:8080/api/v1/tasks",
+            "products": "http://localhost:8080/api/v1/products",
             "users": "http://localhost:8080/api/v1/users",
-            "notes": "http://localhost:8080/api/v1/notes",
+            "orders": "http://localhost:8080/api/v1/orders",
             "status": "http://localhost:8080/status",
             "this help": "http://localhost:8080"
         },
@@ -104,7 +101,7 @@ Get status of this api.
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/status
+URL: {{app}}/status
 ```
 
 
@@ -123,8 +120,8 @@ Status: Get Status | Code: 200
     "message": {
         "db": {
             "users": 9,
-            "tasks": 10,
-            "notes": 5
+            "products": 10,
+            "orders": 5
         },
         "version": "0.22.2",
         "timestamp": 1560897579
@@ -149,7 +146,7 @@ Login and get a JWT Token Authorization Bearer to use this api.
 ```bash
 Method: POST
 Type: RAW
-URL: {{domain-api-rest-slimphp}}/login
+URL: {{app}}/login
 ```
 
 
@@ -206,12 +203,12 @@ Status: Login OK | Code: 200
 
 
 
-## Notes
-Manage Notes.
+## Orders
+Manage Orders.
 
 
 
-### 1. Get All Notes
+### 1. Get All Orders
 
 
 
@@ -220,7 +217,7 @@ Manage Notes.
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/notes
+URL: {{app}}/api/v1/orders
 ```
 
 
@@ -236,7 +233,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes
 
 
 
-### 2. Get One Note
+### 2. Get One Order
 
 
 
@@ -245,13 +242,12 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/notes/3
+URL: {{app}}/api/v1/orders/3
 ```
 
 
 
-### 3. Create Note
-
+### 3. Create Order
 
 
 ***Endpoint:***
@@ -259,7 +255,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/3
 ```bash
 Method: POST
 Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/notes
+URL: {{app}}/api/v1/orders
 ```
 
 
@@ -275,46 +271,33 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes
 
 ```js        
 {
-  "name": "New Soccer Note",
-  "description": "Magic Goal..."
+  "id": "1",
+  "customer-id": "1",
+  "items": [
+    {
+      "product-id": "A101",
+      "quantity": "2",
+      "unit-price": "9.75",
+      "total": "19.50"
+    },
+    {
+      "product-id": "A102",
+      "quantity": "1",
+      "unit-price": "49.50",
+      "total": "49.50"
+    }
+  ],
+          "total": "69.00"
 }
 ```
 
 
 
-### 4. Update Note
+### 4. Update Order (TODO)
 
 
 
-***Endpoint:***
-
-```bash
-Method: PUT
-Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/notes/4
-```
-
-
-***Headers:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| Content-Type | application/json |  |
-
-
-
-***Body:***
-
-```js        
-{
-  "name": "My Note Number 433333",
-  "description": "Free Note?!?!?!"
-}
-```
-
-
-
-### 5. Delete Note
+### 5. Delete Order
 
 
 
@@ -323,20 +306,20 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/4
 ```bash
 Method: DELETE
 Type: FORMDATA
-URL: {{domain-api-rest-slimphp}}/api/v1/notes/22
+URL: {{app}}/api/v1/orders/1
 ```
 
 
 
-## Tasks
-Manage Tasks.
+## Products
+Manage Products.
 
 
 
-### 1. Get All Tasks
+### 1. Get All Products
 
 
-Get all tasks of a user.
+Get all products of a user.
 
 
 ***Endpoint:***
@@ -344,7 +327,7 @@ Get all tasks of a user.
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks
+URL: {{app}}/api/v1/products
 ```
 
 
@@ -368,10 +351,10 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 
 
 
-### 2. Get One Task
+### 2. Get One Product
 
 
-Get one task of a user.
+Get one product of a user.
 
 
 ***Endpoint:***
@@ -379,7 +362,7 @@ Get one task of a user.
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/13
+URL: {{app}}/api/v1/products/13
 ```
 
 
@@ -391,10 +374,10 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/13
 
 
 
-### 3. Create Task
+### 3. Create Product
 
 
-Create a task.
+Create a product.
 
 
 ***Endpoint:***
@@ -402,7 +385,7 @@ Create a task.
 ```bash
 Method: POST
 Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks
+URL: {{app}}/api/v1/products
 ```
 
 
@@ -419,19 +402,20 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 
 ```js        
 {
-  "name": "Go To Sleep",
-  "description": "It's too late, go to sleep man ;-)",
-  "status": 0
+  "id":"A101",
+  "description": "Screwdriver",
+  "category": "1",
+  "price": "99.99"
 }
 
 ```
 
 
 
-### 4. Update Task
+### 4. Update Product
 
 
-Update a task of a user.
+Update a product of a user.
 
 
 ***Endpoint:***
@@ -439,7 +423,7 @@ Update a task of a user.
 ```bash
 Method: PUT
 Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/29
+URL: {{app}}/api/v1/products/29
 ```
 
 
@@ -456,19 +440,19 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/29
 
 ```js        
 {
-  "name": "Go To Sleep NOW!!",
-  "description": "It's too late, go to sleep man haha...",
-  "status": 1
+  "description": "Screwdriver2",
+  "category": "2",
+  "price": "99.99"
 }
 
 ```
 
 
 
-### 5. Delete Task
+### 5. Delete Product
 
 
-Delete a task of a user.
+Delete a product of a user.
 
 
 ***Endpoint:***
@@ -476,7 +460,7 @@ Delete a task of a user.
 ```bash
 Method: DELETE
 Type: FORMDATA
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/29
+URL: {{app}}/api/v1/products/Screwdriver2
 ```
 
 
@@ -502,7 +486,7 @@ Manage Users.
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/users
+URL: {{app}}/api/v1/users
 ```
 
 
@@ -534,7 +518,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/users/8
+URL: {{app}}/api/v1/users/8
 ```
 
 
@@ -557,7 +541,7 @@ Register a new user.
 ```bash
 Method: POST
 Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/users
+URL: {{app}}/api/v1/users
 ```
 
 
@@ -592,7 +576,7 @@ Update a user.
 ```bash
 Method: PUT
 Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/users/9
+URL: {{app}}/api/v1/users/9
 ```
 
 
@@ -628,7 +612,7 @@ Delete a user.
 ```bash
 Method: DELETE
 Type: FORMDATA
-URL: {{domain-api-rest-slimphp}}/api/v1/users/112
+URL: {{app}}/api/v1/users/112
 ```
 
 
@@ -637,9 +621,3 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/112
 | Key | Value | Description |
 | --- | ------|-------------|
 | Authorization | {{jwt}} |  |
-
-
-
----
-[Back to top](#rest-api-slim-php)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-09-28 18:14:11 by [docgen](https://github.com/thedevsaddam/docgen)

@@ -84,6 +84,21 @@ final class ProductRepository extends BaseRepository
         return $this->checkAndGetProduct((string)$id);
     }
 
+    public function isProductExist(string $id): bool
+    {
+        $query = '
+            SELECT `id` FROM `products` WHERE `id` = :id
+        ';
+        $statement = $this->getDb()->prepare($query);
+        $statement->bindParam('id', $id);
+        $statement->execute();
+        $product = $statement->fetchObject(Product::class);
+        if (!$product) {
+            return false;
+        }
+        return true;
+    }
+
     public function checkAndGetProduct(string $id): Product
     {
         $query = '
