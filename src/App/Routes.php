@@ -52,7 +52,7 @@ $app->group('/api/v1', function () use ($app): void {
         $app->get('', Order\GetAll::class);
         $app->post('', Order\Create::class);
         $app->get('/{id}', Order\GetOne::class);
-        $app->put('/{id}', Order\Update::class);
+//        $app->put('/{id}', Order\Update::class); todo
         $app->delete('/{id}', Order\Delete::class);
     })->add(new Auth());
 });

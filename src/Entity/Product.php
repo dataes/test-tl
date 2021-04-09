@@ -14,6 +14,8 @@ final class Product
 
     private float $price;
 
+    // todo add quantity prop
+
     public function toJson(): object
     {
         return json_decode((string)json_encode(get_object_vars($this)), false);

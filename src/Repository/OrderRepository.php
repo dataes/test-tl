@@ -58,18 +58,41 @@ final class OrderRepository extends BaseRepository
     {
         $query = '
             INSERT INTO `orders`
-                (`total`, `user_id`)
+                (`id`, `total`, `user_id`)
             VALUES
-                (:total, :userId)
+                (:id, :total, :userId)
         ';
         $statement = $this->getDb()->prepare($query);
+        $id = $order->getId();
         $total = $order->getTotal();
         $userId = $order->getUserId();
+        $statement->bindParam('id', $id);
         $statement->bindParam('total', $total);
         $statement->bindParam('userId', $userId);
         $statement->execute();
 
         $id = (int)$this->database->lastInsertId();
+
+        // insert in pivot table
+        $query = '
+            INSERT INTO `product_has_order`
+                (`product_id`, `order_id`, `price`, `quantity`)
+            VALUES
+                (:product_id, :order_id, :price, :quantity)
+        ';
+
+        foreach ($order->getProducts() as $product) {
+            $statement = $this->getDb()->prepare($query);
+            $productId = $product->id;
+            $orderId = $order->getId();
+            $price = $product->price;
+            $quantity = $product->quantity;
+            $statement->bindParam('product_id', $productId);
+            $statement->bindParam('order_id', $orderId);
+            $statement->bindParam('price', $price);
+            $statement->bindParam('quantity', $quantity);
+            $statement->execute();
+        }
 
         return $this->checkAndGetOrder((int)$id, (int) $userId);
     }
@@ -87,9 +110,23 @@ final class OrderRepository extends BaseRepository
         if (!$order) {
             throw new \App\Exception\Order('Order not found.', 404);
         }
-
-        // todo add product items to the order result
+        // todo join products linked in the get order result
         return $order;
+    }
+
+    public function isOrderExist(int $id): bool
+    {
+        $query = '
+            SELECT `id` FROM `orders` WHERE `id` = :id
+        ';
+        $statement = $this->getDb()->prepare($query);
+        $statement->bindParam('id', $id);
+        $statement->execute();
+        $order = $statement->fetchObject(Order::class);
+        if (!$order) {
+            return false;
+        }
+        return true;
     }
 
     public function update(Order $order): Order
@@ -113,6 +150,11 @@ final class OrderRepository extends BaseRepository
 
     public function delete(int $orderId,  int $userId): void
     {
+        $query = 'DELETE FROM `product_has_order` WHERE `order_id` = :orderId';
+        $statement = $this->getDb()->prepare($query);
+        $statement->bindParam('orderId', $orderId);
+        $statement->execute();
+
         $query = 'DELETE FROM `orders` WHERE `id` = :id AND `user_id` = :userId';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $orderId);

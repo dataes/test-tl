@@ -27,13 +27,44 @@ abstract class Base extends BaseService
         $this->redisService = $redisService;
     }
 
-    protected static function validateOrderTotal(float $total): float
+    protected function validateOrderId(string $id): int
     {
-        if (!v::floatVal()->validate($total)) {
+        if (!v::notEmpty()->validate($id) || !v::stringType()->validate($id) || (int)$id === 0) {
+            throw new \App\Exception\Order('Invalid id', 400);
+        }
+
+        if ($this->isOrderExist($id)) {
+            throw new \App\Exception\Order('Id already used', 400);
+        }
+
+        return (int)$id;
+    }
+
+    protected static function validateOrderUserId(string $userId): int
+    {
+        if (!v::notEmpty()->validate($userId) || !v::stringType()->validate($userId)) {
+            throw new \App\Exception\Order('Invalid customer-id', 400);
+        }
+
+        return (int)$userId;
+    }
+
+    protected static function validateOrderTotal(string $total): float
+    {
+        if (!v::notEmpty()->validate($total) || !v::stringType()->validate($total)) {
             throw new \App\Exception\Order('Invalid total', 400);
         }
 
-        return $total;
+        return (float)$total;
+    }
+
+    protected static function validateOrderItems(?array $items): array
+    {
+        if (!v::notEmpty()->validate($items) || !v::arrayType()->validate($items)) {
+            throw new \App\Exception\Order('Can not create order without items', 400);
+        }
+
+        return (array)$items;
     }
 
     protected function getOrderFromCache(int $orderId, int $userId): object
@@ -53,6 +84,11 @@ abstract class Base extends BaseService
     protected function getOrderFromDb(int $orderId, int $userId): Order
     {
         return $this->getOrderRepository()->checkAndGetOrder($orderId, $userId);
+    }
+
+    protected function isOrderExist(string $orderId): bool
+    {
+        return $this->getOrderRepository()->isOrderExist((int)$orderId);
     }
 
     protected function getOrderRepository(): OrderRepository

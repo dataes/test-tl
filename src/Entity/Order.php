@@ -10,6 +10,8 @@ final class Order
 
     private float $total;
 
+    private array $products;
+
     private int $userId;
 
     public function toJson(): object
@@ -22,6 +24,13 @@ final class Order
         return $this->id;
     }
 
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getTotal(): float
     {
         return $this->total;
@@ -30,6 +39,18 @@ final class Order
     public function setTotal(float $total): self
     {
         $this->total = $total;
+
+        return $this;
+    }
+
+    public function getProducts(): array
+    {
+        return $this->products;
+    }
+
+    public function setProducts(array $products): self {
+
+        $this->products = $products;
 
         return $this;
     }

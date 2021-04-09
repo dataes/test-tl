@@ -94,7 +94,7 @@ final class ProductRepository extends BaseRepository
         $statement->execute();
         $product = $statement->fetchObject(Product::class);
         if (!$product) {
-            throw new \App\Exception\Product('Product not found.', 404);
+            throw new \App\Exception\Product('Product ' . $id . ' not found.', 404);
         }
 
         return $product;
