@@ -169,12 +169,8 @@ OK (57 tests, 328 assertions)
 - Do Unit Tests for entities and service logic
 - Add more tests and try to break the applicaton
 - Test coverage should be 100% covered
-
-### IMPORT WITH POSTMAN:
-
-All the information of the API, prepared to download and use as postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
+- create a Postman collection ready to use
+- use swagger and create a better documentation for api
 
 ## :page_facing_up: LICENSE
 
