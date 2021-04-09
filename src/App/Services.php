@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Service\Note;
-use App\Service\Task\TaskService;
 use App\Service\Product\ProductService;
 use App\Service\Order\OrderService;
 use App\Service\User;
@@ -34,11 +32,6 @@ $container['login_user_service'] = static fn (ContainerInterface $container): Us
     $container->get('redis_service')
 );
 
-$container['task_service'] = static fn (ContainerInterface $container): TaskService => new TaskService(
-    $container->get('task_repository'),
-    $container->get('redis_service')
-);
-
 $container['product_service'] = static fn (ContainerInterface $container): ProductService => new ProductService(
     $container->get('product_repository'),
     $container->get('redis_service')
@@ -46,25 +39,5 @@ $container['product_service'] = static fn (ContainerInterface $container): Produ
 
 $container['order_service'] = static fn (ContainerInterface $container): OrderService => new OrderService(
     $container->get('order_repository'),
-    $container->get('redis_service')
-);
-
-$container['find_note_service'] = static fn (ContainerInterface $container): Note\Find => new Note\Find(
-    $container->get('note_repository'),
-    $container->get('redis_service')
-);
-
-$container['create_note_service'] = static fn (ContainerInterface $container): Note\Create => new Note\Create(
-    $container->get('note_repository'),
-    $container->get('redis_service')
-);
-
-$container['update_note_service'] = static fn (ContainerInterface $container): Note\Update => new Note\Update(
-    $container->get('note_repository'),
-    $container->get('redis_service')
-);
-
-$container['delete_note_service'] = static fn (ContainerInterface $container): Note\Delete => new Note\Delete(
-    $container->get('note_repository'),
     $container->get('redis_service')
 );

@@ -9,7 +9,7 @@ final class Delete extends Base
     public function delete(int $userId): void
     {
         $this->getUserFromDb($userId);
-        $this->userRepository->deleteUserTasks($userId);
+        // todo delete related data
         $this->userRepository->delete($userId);
         if (self::isRedisEnabled() === true) {
             $this->deleteFromCache($userId);

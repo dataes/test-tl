@@ -87,7 +87,7 @@ class OrderTest extends BaseTestCase
             '/api/v1/orders',
             [
                 'id' => '999',
-                'customer-id' => '8',
+                'customer-id' => '1',
                 'items' => [
                     [
                         "product-id" => "A101",
@@ -220,9 +220,8 @@ class OrderTest extends BaseTestCase
             '/api/v1/orders',
             [
                 'id' => '999',
-                'customer-id' => '10',
-                'items' => [
-                ],
+                'customer-id' => '1',
+                'items' => [],
                 'total' => "69.00"
             ]
         );

@@ -144,12 +144,4 @@ final class UserRepository extends BaseRepository
         $statement->bindParam('id', $userId);
         $statement->execute();
     }
-
-    public function deleteUserTasks(int $userId): void
-    {
-        $query = 'DELETE FROM `tasks` WHERE `userId` = :userId';
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('userId', $userId);
-        $statement->execute();
-    }
 }

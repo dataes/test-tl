@@ -16,9 +16,7 @@ final class DefaultController extends BaseController
         $app = $this->container->get('settings')['app'];
         $url = $app['domain'];
         $endpoints = [
-            'tasks' => $url . '/api/v1/tasks',
             'users' => $url . '/api/v1/users',
-            'notes' => $url . '/api/v1/notes',
             'docs' => $url . '/docs/index.html',
             'status' => $url . '/status',
             'this help' => $url . '',
@@ -47,14 +45,10 @@ final class DefaultController extends BaseController
 
     private function getDbStats(): array
     {
-        $taskService = $this->container->get('task_service');
         $userService = $this->container->get('find_user_service');
-        $noteService = $this->container->get('find_note_service');
 
         return [
-            'tasks' => count($taskService->getAllTasks()),
             'users' => count($userService->getAll()),
-            'notes' => count($noteService->getAll()),
         ];
     }
 
