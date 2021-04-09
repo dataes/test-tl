@@ -20,7 +20,7 @@ echo <<<EOF
                      |_|         |_|    
 
 *************************************************************
-Project: https://github.com/maurobonfietti/rest-api-slim-php
+Project: https://github.com/dataes/test-tl
 *************************************************************
 
 Successfully created project!
@@ -35,7 +35,5 @@ $ composer start
 (P.S. set your MySQL connection in your .env file)
 
 Thanks for installing this project!
-
-Now go build a cool RESTful API ;-)
 
 EOF;

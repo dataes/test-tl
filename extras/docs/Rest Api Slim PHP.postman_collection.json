@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "78eb728a-890c-6cc5-1036-fcd8f46a2243",
 		"name": "Rest Api Slim PHP",
-		"description": "[Example of REST API](https://github.com/maurobonfietti/rest-api-slim-php) with Slim PHP micro framework.\n\nThis simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)\n",
+		"description": "[Example of REST API](https://github.com/dataes/test-tl) with Slim PHP micro framework.\n\nThis simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [

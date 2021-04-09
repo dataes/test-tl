@@ -1,10 +1,16 @@
+# Technical Assessment
+
+https://github.com/teamleadercrm/coding-test/blob/master/1-discounts.md
+
+-------------------------------------------------
+
 # REST API IN SLIM PHP
 
 Example of RESTful API microservices with [Slim PHP micro framework](https://www.slimframework.com).
 
 Main technologies used: `PHP 7, Slim 3, MySQL, Redis, dotenv, PHPUnit and JSON Web Tokens.`
 
-Also, There are additional tools like: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, PHP Insights, Heroku and CORS.`
+Also, There are additional tools like: `Docker & Docker Compose, Travis CI, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, PHP Insights, Heroku and CORS.`
 
 ## :gear: QUICK INSTALL:
 
@@ -16,19 +22,6 @@ Also, There are additional tools like: `Docker & Docker Compose, Travis CI, Swag
 - MySQL/MariaDB.
 - Redis (Optional).
 - or Docker.
-
-
-### With Composer:
-
-You can create a new project running the following commands:
-
-```bash
-$ composer create-project maurobonfietti/rest-api-slim-php [my-api-name]
-$ cd [my-api-name]
-$ composer restart-db
-$ composer test
-$ composer start
-```
 
 ### With Git:
 
@@ -161,12 +154,21 @@ OK (57 tests, 328 assertions)
 
 - Delete Order: `DELETE /api/v1/orders/{id}`
 
-Also, you can see the API documentation with the [full list of endpoints](extras/docs/endpoints.md).
 
-
-### HELP AND DOCS:
-
-For more information on how to use the REST API, see the following documentation available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
+### ------------------------!! TODO LIST !!------------------------
+- Add 'revenue' in users table and subtraction logic + exception if no revenues on orders
+- Create REST api for "category" like product and order
+- Order : update
+- Add quantity as a property in Product + logic to subtract quantity when ordering
+- Join Products linked to an order for the get request
+- Instead of using directly the repositories we should create some repositoryInterface, then the base services will use the interface, and the repository will implement the interface in order to solidify it as a contract
+- Check if category exist on Product operations
+- Create multiple products from an array instead of single one
+- Delete related date when we delete a user
+- User faker in unit tests
+- Do Unit Tests for entities and service logic
+- Add more tests and try to break the applicaton
+- Test coverage should be 100% covered
 
 ### IMPORT WITH POSTMAN:
 

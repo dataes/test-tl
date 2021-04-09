@@ -1,5 +1,5 @@
 {
-    "name": "maurobonfietti/rest-api-slim-php",
+    "name": "dataes/test-tl",
     "description": "Example of REST API with Slim PHP Framework.",
     "keywords": [
         "php",
@@ -11,13 +11,13 @@
         "rest",
         "api"
     ],
-    "homepage": "https://github.com/maurobonfietti/rest-api-slim-php",
+    "homepage": "https://github.com/dataes/test-tl",
     "license": "MIT",
     "authors": [
         {
-            "name": "Mauro Bonfietti",
-            "email": "mauro.bonfietti@gmail.com",
-            "homepage": "https://github.com/maurobonfietti"
+            "name": "Vincent denaes",
+            "email": "denaesvin@gmail.com",
+            "homepage": "https://github.com/dataes"
         }
     ],
     "minimum-stability": "dev",
