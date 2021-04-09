@@ -156,21 +156,22 @@ OK (57 tests, 328 assertions)
 
 
 ### ------------------------!! TODO LIST !!------------------------
+- Do Unit Tests with mock for entities and service logic
+- Do fixtures
+- Add more tests and try to break the app
+- Test coverage should be 100% covered
+- Instead of using directly the repositories we should create some repositoryInterface, then the base services will use the interface, and the repository will implement the interface in order to solidify it as a contract
 - Add 'revenue' in users table and subtraction logic + exception if no revenues on orders
 - Create REST api for "category" like product and order
 - Order : update
 - Add quantity as a property in Product + logic to subtract quantity when ordering
-- Join Products linked to an order for the get request
-- Instead of using directly the repositories we should create some repositoryInterface, then the base services will use the interface, and the repository will implement the interface in order to solidify it as a contract
+- Join Products linked to an Order for the Order get request
 - Check if category exist on Product operations
 - Create multiple products from an array instead of single one
 - Delete related date when we delete a user
 - User faker in unit tests
-- Do Unit Tests for entities and service logic
-- Add more tests and try to break the applicaton
-- Test coverage should be 100% covered
-- create a Postman collection ready to use
-- use swagger and create a better documentation for api
+- Create a Postman collection ready to use
+- Use swagger and create a better documentation for api
 
 ## :page_facing_up: LICENSE
 
