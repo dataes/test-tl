@@ -110,7 +110,6 @@ CREATE TABLE `product_has_order`
     `id`         INT(11) NOT NULL AUTO_INCREMENT,
     `product_id` VARCHAR(255) NOT NULL,
     `order_id`   INT(11) NOT NULL,
-    `price`      FLOAT(11) NULL,
     `quantity`   INT(11) NULL,
     PRIMARY KEY (`product_id`, `order_id`, `id`),
     INDEX `fk_product_has_order_order1_idx` (`order_id` ASC),
@@ -132,6 +131,6 @@ CREATE TABLE `product_has_order`
     COLLATE = utf8_unicode_ci;
 
 INSERT INTO `product_has_order`
-(`product_id`, `order_id`, `price`, `quantity`)
-VALUES ('A101', 1000, 9.75, 2),
-       ('A102', 1000, 49.5, 1);
+(`product_id`, `order_id`, `quantity`)
+VALUES ('A101', 1000, 2),
+       ('A102', 1000, 1);

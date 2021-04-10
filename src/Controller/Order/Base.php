@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Order;
 
 use App\Controller\BaseController;
+use App\Service\Discount\DiscountService;
 use App\Service\Order\OrderService;
 use App\Service\Product\ProductService;
 use App\Service\User\Find;
@@ -27,5 +28,10 @@ abstract class Base extends BaseController
     protected function getFindUserService(): Find
     {
         return $this->container->get('find_user_service');
+    }
+
+    protected function getDiscountService(): DiscountService
+    {
+        return $this->container->get('discount_service');
     }
 }

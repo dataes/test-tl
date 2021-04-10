@@ -1,6 +1,19 @@
 # Technical Assessment
-
 https://github.com/teamleadercrm/coding-test/blob/master/1-discounts.md
+
+# Problem 1 : Discounts
+
+We need you to build us a small (micro)service that calculates discounts for orders.
+
+## How discounts work
+
+For now, there are three possible ways of getting a discount:
+
+- A customer who has already bought for over € 1000, gets a discount of 10% on the whole order.
+- For every product of category "Switches" (id 2), when you buy five, you get a sixth for free.
+- If you buy two or more products of category "Tools" (id 1), you get a 20% discount on the cheapest product.
+
+By the way: there may become more ways of granting customers discounts in the future.
 
 -------------------------------------------------
 
@@ -158,20 +171,20 @@ OK (57 tests, 328 assertions)
 ### ------------------------!! TODO LIST !!------------------------
 - Do Unit Tests with mock for entities and service logic
 - Do fixtures
-- Add more tests and try to break the app
+- Add MORE tests and try to break the app
 - Test coverage should be 100% covered
-- Instead of using directly the repositories we should create some repositoryInterface, then the base services will use the interface, and the repository will implement the interface in order to solidify it as a contract
+- Instead of using directly the repositories we should create some repositoryInterface, then the services will use the interface, and the repository will implement the interface in order to solidify it as a contract
 - Add 'revenue' in users table and subtraction logic + exception if no revenues on orders
 - Create REST api for "category" like product and order
 - Order : update
 - Add quantity as a property in Product + logic to subtract quantity when ordering
-- Join Products linked to an Order for the Order get request
 - Check if category exist on Product operations
 - Create multiple products from an array instead of single one
 - Delete related date when we delete a user
 - User faker in unit tests
 - Create a Postman collection ready to use
 - Use swagger and create a better documentation for api
+- Refactoring
 
 ## :page_facing_up: LICENSE
 

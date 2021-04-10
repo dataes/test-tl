@@ -72,20 +72,18 @@ final class OrderRepository extends BaseRepository
         // insert in pivot table
         $query = '
             INSERT INTO `product_has_order`
-                (`product_id`, `order_id`, `price`, `quantity`)
+                (`product_id`, `order_id`, `quantity`)
             VALUES
-                (:product_id, :order_id, :price, :quantity)
+                (:product_id, :order_id, :quantity)
         ';
 
         foreach ($order->getProducts() as $product) {
             $statement = $this->getDb()->prepare($query);
             $productId = $product->id;
             $orderId = $order->getId();
-            $price = $product->price;
-            $quantity = $product->quantity;
+            $quantity = $product->quantity ?: 1; // if no quantity we assume it's one product
             $statement->bindParam('product_id', $productId);
             $statement->bindParam('order_id', $orderId);
-            $statement->bindParam('price', $price);
             $statement->bindParam('quantity', $quantity);
             $statement->execute();
         }
@@ -96,17 +94,20 @@ final class OrderRepository extends BaseRepository
     public function checkAndGetOrder(int $id): Order
     {
         $query = '
-            SELECT * FROM `orders` WHERE `id` = :id
+            SELECT o.id, o.total, o.user_id, pho.product_id, pho.quantity, p.category, p.price FROM `orders` o
+                  JOIN product_has_order pho on o.id = pho.order_id
+                  JOIN products p on p.id = pho.product_id
+WHERE o.`id` = :id
         ';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $id);
         $statement->execute();
-        $order = $statement->fetchObject(Order::class);
+        $order = $statement->fetchAll();
         if (!$order) {
             throw new \App\Exception\Order('Order not found.', 404);
         }
-        // todo join products linked in the get order result
-        return $order;
+
+        return $this->buildOrder($order);
     }
 
     public function isOrderExist(int $id): bool
@@ -154,5 +155,28 @@ final class OrderRepository extends BaseRepository
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $orderId);
         $statement->execute();
+    }
+
+    private function buildOrder(array $orderResult): Order
+    {
+        $order = new Order();
+        $order->setId($orderResult[0]['id']);
+        $order->setUserId($orderResult[0]['user_id']);
+        $order->setTotal($orderResult[0]['total']);
+
+        $products = array_map(
+            function ($row) {
+                return [
+                    'product-id' => $row['product_id'],
+                    'quantity' => $row['quantity'],
+                    'unit-price' => $row['price'],
+                    'category' => $row['category']
+                ];
+            }, $orderResult
+        );
+
+        $order->setProducts($products);
+
+        return $order;
     }
 }

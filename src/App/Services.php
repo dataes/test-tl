@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Service\Product\ProductService;
 use App\Service\Order\OrderService;
+use App\Service\Discount\DiscountService;
 use App\Service\User;
 use Psr\Container\ContainerInterface;
 
@@ -40,4 +41,8 @@ $container['product_service'] = static fn (ContainerInterface $container): Produ
 $container['order_service'] = static fn (ContainerInterface $container): OrderService => new OrderService(
     $container->get('order_repository'),
     $container->get('redis_service')
+);
+
+$container['discount_service'] = static fn (ContainerInterface $container): DiscountService => new DiscountService(
+    $container->get('discount_repository')
 );
