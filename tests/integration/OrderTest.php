@@ -57,7 +57,8 @@ class OrderTest extends BaseTestCase
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('total', $result);
-        $this->assertStringContainsString('user_id', $result);
+        $this->assertStringContainsString('products', $result);
+        $this->assertStringContainsString('userId', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -132,7 +133,9 @@ class OrderTest extends BaseTestCase
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('total', $result);
-        $this->assertStringContainsString('user_id', $result);
+        $this->assertStringContainsString('total', $result);
+        $this->assertStringContainsString('products', $result);
+        $this->assertStringContainsString('userId', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
