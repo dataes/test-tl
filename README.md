@@ -105,18 +105,18 @@ $ make down
 
 ## :traffic_light: TESTING:
 
-Run all PHPUnit tests with `composer test`.
+Run all PHPUnit (integration) tests with `composer test`.
 
 ```bash
 $ composer test
 > phpunit
 PHPUnit 9.5.1 by Sebastian Bergmann and contributors.
 
-........................................................          57 / 57 (100%)
+........................................................          63 / 63 (100%)
 
-Time: 00:01.378, Memory: 16.00 MB
+Time: 00:01.459, Memory: 18.00 MB
 
-OK (57 tests, 328 assertions)
+OK (63 tests, 403 assertions)
 ```
 
 
@@ -167,24 +167,33 @@ OK (57 tests, 328 assertions)
 
 - Delete Order: `DELETE /api/v1/orders/{id}`
 
+--
+
+( note : I have decided to skip a lot of things due to a miss of time and because it's a test 
+I assume the goal is to see how I would implement that. 
+That's why I have created a TODO list )
 
 ### ------------------------!! TODO LIST !!------------------------
-- Do Unit Tests with mock for entities and service logic
-- Do fixtures
+- Do UNIT TESTS with mocks for entities and service logic (was supposed to be TDD)
 - Add MORE tests and try to break the app
 - Test coverage should be 100% covered
+- Do fixtures
 - Instead of using directly the repositories we should create some repositoryInterface, then the services will use the interface, and the repository will implement the interface in order to solidify it as a contract
 - Add 'revenue' in users table and subtraction logic + exception if no revenues on orders
 - Create REST api for "category" like product and order
 - Order : update
 - Add quantity as a property in Product + logic to subtract quantity when ordering
+- Add Discount table with discount type enumeration in order to know what order/user got what discounts  
 - Check if category exist on Product operations
 - Create multiple products from an array instead of single one
 - Delete related date when we delete a user
 - User faker in unit tests
 - Create a Postman collection ready to use
-- Use swagger and create a better documentation for api
-- Refactoring
+- Use swagger and create a better documentation for api endpoints
+- More stats in getDbStats()
+- I assume that I can not have multiple time the same product-id from the request, do the validation regarding that  
+- Do a better validation if possible
+- Refactoring if possible
 
 ## :page_facing_up: LICENSE
 

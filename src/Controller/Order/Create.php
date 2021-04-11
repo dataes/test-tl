@@ -29,6 +29,6 @@ final class Create extends Base
 
         $order = $this->getOrderService()->create($input);
 
-        return $this->jsonResponse($response, 'success', $this->getDiscountService()->getDiscount($order), 201);
+        return $this->jsonResponse($response, 'success', $this->getDiscountService()->getDiscounts($order), 201);
     }
 }

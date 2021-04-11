@@ -43,6 +43,4 @@ $container['order_service'] = static fn (ContainerInterface $container): OrderSe
     $container->get('redis_service')
 );
 
-$container['discount_service'] = static fn (ContainerInterface $container): DiscountService => new DiscountService(
-    $container->get('discount_repository')
-);
+$container['discount_service'] = static fn (ContainerInterface $container): DiscountService => new DiscountService();

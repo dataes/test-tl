@@ -276,18 +276,14 @@ URL: {{app}}/api/v1/orders
   "items": [
     {
       "product-id": "A101",
-      "quantity": "2",
-      "unit-price": "9.75",
-      "total": "19.50"
+      "quantity": "2"
     },
     {
       "product-id": "A102",
-      "quantity": "1",
-      "unit-price": "49.50",
-      "total": "49.50"
+      "quantity": "1"
     }
   ],
-          "total": "69.00"
+  "total": "69.00"
 }
 ```
 
@@ -398,7 +394,7 @@ URL: {{app}}/api/v1/products
 
 
 
-***Body:***
+***Body:*** (todo : create multiple with an array of products)
 
 ```js        
 {

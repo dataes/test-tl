@@ -34,7 +34,7 @@ abstract class Base extends BaseService
         }
 
         if ($this->isProductExist($id)) {
-            throw new \App\Exception\Product('Id already used', 400);
+            throw new \App\Exception\Product('Product ID already used', 400);
         }
 
         return $id;

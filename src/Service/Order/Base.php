@@ -34,7 +34,7 @@ abstract class Base extends BaseService
         }
 
         if ($this->isOrderExist($id)) {
-            throw new \App\Exception\Order('Id already used', 400);
+            throw new \App\Exception\Order('Order ID already used', 400);
         }
 
         return (int)$id;
