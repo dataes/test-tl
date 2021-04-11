@@ -23,8 +23,6 @@ Example of RESTful API microservices with [Slim PHP micro framework](https://www
 
 Main technologies used: `PHP 7, Slim 3, MySQL, Redis, dotenv, PHPUnit and JSON Web Tokens.`
 
-Also, There are additional tools like: `Docker & Docker Compose, Travis CI, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, PHP Insights, Heroku and CORS.`
-
 ## :gear: QUICK INSTALL:
 
 ### Requirements:
