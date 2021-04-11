@@ -10,3 +10,4 @@
 /.scannerwork/
 /.phpunit.result.cache
 .idea/vcs.xml
+.idea
