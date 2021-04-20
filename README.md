@@ -1,4 +1,6 @@
 # Technical Assessment
+https://github.com/teamleadercrm/coding-test/blob/master/1-discounts.md
+
 Problem 1 : Discounts
 We need you to build us a small (micro)service that calculates discounts for orders.
 
